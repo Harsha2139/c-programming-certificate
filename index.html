@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="AI StudyMate - AI Student Assistant Dashboard"
+    >
+
+    <title>AI StudyMate | Student Assistant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-icon">AI</div>
+
+            <div>
+                <h2>StudyMate</h2>
+                <span>AI Student Assistant</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <button class="nav-item active" data-section="dashboard">
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+            <button class="nav-item" data-section="ask-ai">
+                <span>✦</span>
+                Ask AI
+            </button>
+
+            <button class="nav-item" data-section="subjects">
+                <span>▣</span>
+                My Subjects
+            </button>
+
+            <button class="nav-item" data-section="progress">
+                <span>◈</span>
+                Progress
+            </button>
+
+            <button class="nav-item" data-section="history">
+                <span>◷</span>
+                History
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="nav-item" id="themeButton">
+                <span id="themeIcon">☾</span>
+                <span id="themeText">Dark Mode</span>
+            </button>
+
+            <button class="nav-item">
+                <span>⚙</span>
+                Settings
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <button class="menu-button" id="menuButton">
+                ☰
+            </button>
+
+            <div class="search-box">
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search questions..."
+                >
+            </div>
+
+            <div class="top-actions">
+
+                <button class="icon-button" title="Notifications">
+                    🔔
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        H
+                    </div>
+
+                    <div class="profile-info">
+                        <strong>Harsha</strong>
+                        <span>CSE-AIML Student</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             DASHBOARD SECTION
+        ========================== -->
+
+        <section class="page-section active-section" id="dashboard">
+
+            <div class="welcome">
+
+                <div>
+                    <p class="eyebrow">AI STUDY ASSISTANT</p>
+
+                    <h1>
+                        Good afternoon, Harsha 👋
+                    </h1>
+
+                    <p>
+                        Continue learning and improve your technical skills
+                        with your AI study assistant.
+                    </p>
+                </div>
+
+                <div class="date-card">
+                    <span>Today's Goal</span>
+                    <strong>3 / 5 Topics</strong>
+                    <small>Keep going!</small>
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+                        ✦
+                    </div>
+
+                    <div>
+                        <span>AI Questions</span>
+                        <h2 id="questionCount">25</h2>
+                        <small>+8 this week</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ◈
+                    </div>
+
+                    <div>
+                        <span>Learning Progress</span>
+                        <h2>78%</h2>
+                        <small>+12% this month</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        ▣
+                    </div>
+
+                    <div>
+                        <span>Topics Completed</span>
+                        <h2>12</h2>
+                        <small>3 this week</small>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+                        ◷
+                    </div>
+
+                    <div>
+                        <span>Study Time</span>
+                        <h2>18.5h</h2>
+                        <small>+2.4h this week</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MAIN DASHBOARD GRID -->
+
+            <div class="dashboard-grid">
+
+                <!-- ASK AI CARD -->
+
+                <div class="card ai-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="card-label">AI ASSISTANT</span>
+
+                            <h2>What do you want to learn?</h2>
+
+                            <p>
+                                Ask anything about programming,
+                                mathematics, AI, ML or your subjects.
+                            </p>
+                        </div>
+
+                        <div class="ai-symbol">
+                            ✦
+                        </div>
+
+                    </div>
+
+
+                    <div class="prompt-box">
+
+                        <textarea
+                            id="questionInput"
+                            placeholder="Example: Explain the Master Theorem in simple words..."
+                        ></textarea>
+
+                        <div class="prompt-footer">
+
+                            <span>
+                                AI StudyMate
+                            </span>
+
+                            <button
+                                class="primary-button"
+                                id="askButton"
+                            >
+                                Ask AI →
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AI RESPONSE -->
+
+                    <div
+                        class="ai-response hidden"
+                        id="aiResponse"
+                    >
+
+                        <div class="response-header">
+                            <div class="small-ai-icon">AI</div>
+
+                            <div>
+                                <strong>StudyMate AI</strong>
+                                <span>Generated response</span>
+                            </div>
+                        </div>
+
+                        <div id="responseText"></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS CARD -->
+
+                <div class="card progress-card">
+
+                    <div class="card-header">
+
+                        <div>
+                            <span class="card-label">
+                                YOUR PROGRESS
+                            </span>
+
+                            <h2>Learning Overview</h2>
+                        </div>
+
+                        <button class="more-button">
+                            ⋮
+                        </button>
+
+                    </div>
+
+
+                    <div class="progress-circle">
+
+                        <div>
+                            <strong>78%</strong>
+                            <span>Overall</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="progress-list">
+
+                        <div class="progress-item">
+
+                            <div>
+                                <span>Data Structures</span>
+                                <strong>85%</strong>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div style="width: 85%"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div>
+                                <span>Algorithms</span>
+                                <strong>72%</strong>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div style="width: 72%"></div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div>
+                                <span>Machine Learning</span>
+                                <strong>68%</strong>
+                            </div>
+
+                            <div class="progress-bar">
+                                <div style="width: 68%"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT QUESTIONS -->
+
+            <div class="card recent-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            RECENT ACTIVITY
+                        </span>
+
+                        <h2>Recent Questions</h2>
+                    </div>
+
+                    <button
+                        class="text-button"
+                        data-section-target="history"
+                    >
+                        View all →
+                    </button>
+
+                </div>
+
+
+                <div class="question-list" id="questionList">
+
+                    <div class="question-item">
+
+                        <div class="question-icon">
+                            DAA
+                        </div>
+
+                        <div class="question-content">
+                            <strong>Explain Karatsuba Algorithm</strong>
+                            <span>Algorithms • 10 minutes ago</span>
+                        </div>
+
+                        <span class="status completed">
+                            Completed
+                        </span>
+
+                    </div>
+
+
+                    <div class="question-item">
+
+                        <div class="question-icon">
+                            DSA
+                        </div>
+
+                        <div class="question-content">
+                            <strong>What is the Knapsack Problem?</strong>
+                            <span>Data Structures • 1 hour ago</span>
+                        </div>
+
+                        <span class="status completed">
+                            Completed
+                        </span>
+
+                    </div>
+
+
+                    <div class="question-item">
+
+                        <div class="question-icon">
+                            ML
+                        </div>
+
+                        <div class="question-content">
+                            <strong>Explain classification algorithms</strong>
+                            <span>Machine Learning • Yesterday</span>
+                        </div>
+
+                        <span class="status completed">
+                            Completed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ASK AI SECTION
+        ========================== -->
+
+        <section
+            class="page-section"
+            id="ask-ai"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">AI ASSISTANT</p>
+
+                <h1>Ask AI</h1>
+
+                <p>
+                    Ask questions and get simple explanations.
+                </p>
+
+            </div>
+
+
+            <div class="chat-container card">
+
+                <div class="chat-messages" id="chatMessages">
+
+                    <div class="message ai-message">
+
+                        <div class="message-avatar">
+                            AI
+                        </div>
+
+                        <div class="message-content">
+
+                            <strong>StudyMate AI</strong>
+
+                            <p>
+                                Hello! 👋 I'm your AI study assistant.
+                                What would you like to learn today?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Ask your question..."
+                    >
+
+                    <button
+                        class="primary-button"
+                        id="chatSendButton"
+                    >
+                        Send
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SUBJECTS SECTION
+        ========================== -->
+
+        <section
+            class="page-section"
+            id="subjects"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">LEARNING</p>
+
+                <h1>My Subjects</h1>
+
+                <p>
+                    Track your progress across different subjects.
+                </p>
+
+            </div>
+
+
+            <div class="subject-grid">
+
+                <div class="subject-card">
+
+                    <div class="subject-icon purple">
+                        DAA
+                    </div>
+
+                    <h3>Design & Analysis of Algorithms</h3>
+
+                    <p>12 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div style="width: 82%"></div>
+                    </div>
+
+                    <strong>82%</strong>
+
+                </div>
+
+
+                <div class="subject-card">
+
+                    <div class="subject-icon blue">
+                        DSA
+                    </div>
+
+                    <h3>Data Structures</h3>
+
+                    <p>18 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div style="width: 76%"></div>
+                    </div>
+
+                    <strong>76%</strong>
+
+                </div>
+
+
+                <div class="subject-card">
+
+                    <div class="subject-icon green">
+                        ML
+                    </div>
+
+                    <h3>Machine Learning</h3>
+
+                    <p>10 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div style="width: 68%"></div>
+                    </div>
+
+                    <strong>68%</strong>
+
+                </div>
+
+
+                <div class="subject-card">
+
+                    <div class="subject-icon orange">
+                        DB
+                    </div>
+
+                    <h3>Database Management</h3>
+
+                    <p>9 topics completed</p>
+
+                    <div class="progress-bar">
+                        <div style="width: 61%"></div>
+                    </div>
+
+                    <strong>61%</strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS SECTION
+        ========================== -->
+
+        <section
+            class="page-section"
+            id="progress"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">ANALYTICS</p>
+
+                <h1>Learning Progress</h1>
+
+                <p>
+                    Monitor your learning performance.
+                </p>
+
+            </div>
+
+
+            <div class="analytics-grid">
+
+                <div class="card analytics-card">
+
+                    <span>Total Questions</span>
+
+                    <h2>25</h2>
+
+                    <p class="positive">
+                        ↑ 32% from last week
+                    </p>
+
+                </div>
+
+
+                <div class="card analytics-card">
+
+                    <span>Topics Completed</span>
+
+                    <h2>12</h2>
+
+                    <p class="positive">
+                        ↑ 3 this week
+                    </p>
+
+                </div>
+
+
+                <div class="card analytics-card">
+
+                    <span>Study Hours</span>
+
+                    <h2>18.5h</h2>
+
+                    <p class="positive">
+                        ↑ 2.4h this week
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="card chart-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <span class="card-label">
+                            WEEKLY ACTIVITY
+                        </span>
+
+                        <h2>Study Activity</h2>
+                    </div>
+
+                </div>
+
+                <div class="chart">
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 45%"></div>
+                        <span>Mon</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 65%"></div>
+                        <span>Tue</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 50%"></div>
+                        <span>Wed</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 80%"></div>
+                        <span>Thu</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 70%"></div>
+                        <span>Fri</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 90%"></div>
+                        <span>Sat</span>
+                    </div>
+
+                    <div class="chart-column">
+                        <div class="chart-bar" style="height: 55%"></div>
+                        <span>Sun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HISTORY SECTION
+        ========================== -->
+
+        <section
+            class="page-section"
+            id="history"
+        >
+
+            <div class="section-heading">
+
+                <p class="eyebrow">ACTIVITY</p>
+
+                <h1>Question History</h1>
+
+                <p>
+                    View your previous questions.
+                </p>
+
+            </div>
+
+
+            <div class="card history-card">
+
+                <div class="history-search">
+
+                    <input
+                        type="text"
+                        id="historySearch"
+                        placeholder="Search history..."
+                    >
+
+                </div>
+
+
+                <div id="historyList">
+
+                    <div class="history-item">
+
+                        <div class="question-icon">
+                            DAA
+                        </div>
+
+                        <div>
+                            <strong>
+                                Explain Karatsuba Algorithm
+                            </strong>
+
+                            <p>
+                                Algorithms • Today
+                            </p>
+                        </div>
+
+                        <button class="small-button">
+                            View
+                        </button>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="question-icon">
+                            DSA
+                        </div>
+
+                        <div>
+                            <strong>
+                                What is the Knapsack Problem?
+                            </strong>
+
+                            <p>
+                                Data Structures • Today
+                            </p>
+                        </div>
+
+                        <button class="small-button">
+                            View
+                        </button>
+
+                    </div>
+
+
+                    <div class="history-item">
+
+                        <div class="question-icon">
+                            ML
+                        </div>
+
+                        <div>
+                            <strong>
+                                Explain classification algorithms
+                            </strong>
+
+                            <p>
+                                Machine Learning • Yesterday
+                            </p>
+
+                        </div>
+
+                        <button class="small-button">
+                            View
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE OVERLAY -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
